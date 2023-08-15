@@ -6,7 +6,7 @@
 Предсказать варианты заранее невозможно. Поэтому бот обучаемый нейросетью! 
 
 
-![Пример работы](https://raw.githubusercontent.com/Pavel2232/DevmanTGBotApi/master/Screenshot_20230615_135206.jpg)
+![Пример работы]([https://raw.githubusercontent.com/Pavel2232/DevmanTGBotApi/master/Screenshot_20230615_135206.jpg](https://github.com/Pavel2232/Neuronet-bot/blob/master/demo_tg_bot.gif))
 ### Как запустить проект.
 1. ``` git clone https://github.com/Pavel2232/DevmanTGBotApi```
 
