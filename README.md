@@ -6,9 +6,10 @@
 Предсказать варианты заранее невозможно. Поэтому бот обучаемый нейросетью! 
 
 
-![Пример работы]([https://raw.githubusercontent.com/Pavel2232/DevmanTGBotApi/master/Screenshot_20230615_135206.jpg](https://github.com/Pavel2232/Neuronet-bot/blob/master/demo_tg_bot.gif))
+![Пример работы](https://github.com/Pavel2232/Neuronet-bot/blob/master/demo_tg_bot.gif)
+![](https://github.com/Pavel2232/Neuronet-bot/blob/master/demo_vk_bot.gif)
 ### Как запустить проект.
-1. ``` git clone https://github.com/Pavel2232/DevmanTGBotApi```
+1. ``` git clone https://github.com/Pavel2232/Neuronet-bot```
 
 2. Установите необходимые библиотеки  ```poetry init```
 
