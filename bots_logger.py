@@ -22,7 +22,7 @@ class VkLogger(logging.Handler):
         self.chat_id = chat_id
 
     def emit(self, record):
-        log = self.format(record.query_result.fulfillment_text)
+        log = self.format(record)
         send_message = self.vk_bot.messages.send(
             user_id=self.chat_id,
             message=log,

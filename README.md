@@ -7,7 +7,9 @@
 
 
 ![Пример работы](https://github.com/Pavel2232/Neuronet-bot/blob/master/demo_tg_bot.gif)
+# [Бот Тг](https://t.me/neuronet_pablo_bot)
 ![](https://github.com/Pavel2232/Neuronet-bot/blob/master/demo_vk_bot.gif)
+# [Бот Вк](https://vk.com/club222012081)
 ### Как запустить проект.
 1. ``` git clone https://github.com/Pavel2232/Neuronet-bot```
 
