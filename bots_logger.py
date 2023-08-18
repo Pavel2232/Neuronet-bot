@@ -22,9 +22,9 @@ class VkLogger(logging.Handler):
         self.chat_id = chat_id
 
     def emit(self, record):
-        log = self.format(record)
+        log = self.format(record.query_result.fulfillment_text)
         send_message = self.vk_bot.messages.send(
             user_id=self.chat_id,
-            message=log.query_result.fulfillment_text,
+            message=log,
             random_id=random.randint(1, 1000)
         )

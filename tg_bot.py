@@ -19,6 +19,7 @@ dp = Dispatcher(bot)
 
 @dp.message_handler()
 async def to_begin(message: Message):
+
     logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                         level=logging.INFO)
     logger.addHandler(TelegramLogger(dp, env('TG_CHAT_ID')))
