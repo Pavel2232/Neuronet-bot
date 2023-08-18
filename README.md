@@ -13,6 +13,8 @@
 ### Как запустить проект.
 1. ``` git clone https://github.com/Pavel2232/Neuronet-bot```
 
+# [Получить апи ключи гугл](https://cloud.google.com/docs/authentication/provide-credentials-adc#how-to)
+
 2. Установите необходимые библиотеки  ```poetry install```
 
 3. Создайте файл .env и заполните следующие значения:
@@ -22,6 +24,7 @@
 * PROJECT_ID=PROJECT_ID от DIALOGFLOW
 * VK_CHAT_ID=ваш чат айди
 * TG_CHAT_ID= ваш чат айди(Чтобы получить свой chat_id, напишите в Telegram специальному боту: @userinfobot)
+
 
 4. Для запуска программы:
 ```python tg_bot.py```
