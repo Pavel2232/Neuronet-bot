@@ -1,5 +1,9 @@
 import requests
+from environs import Env
 from google.cloud import dialogflow
+env = Env()
+
+env.read_env('.env')
 
 
 def detect_intent_text(project_id, session_id, message_to_dialogflow, language_code='ru'):
@@ -50,4 +54,4 @@ def fill_intent():
     for disp_name in json_response:
         training_phrases_parts = json_response.get(disp_name).get('questions')
         answer = json_response.get(disp_name).get('answer')
-        create_intent('pablo2232-hcpg', disp_name, training_phrases_parts, answer)
+        create_intent(env('PROJECT_ID'), disp_name, training_phrases_parts, answer)
