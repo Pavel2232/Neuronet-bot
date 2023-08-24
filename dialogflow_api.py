@@ -3,8 +3,11 @@ import logging
 import requests
 from environs import Env
 from google.cloud import dialogflow
+from requests.exceptions import HTTPError
+
 
 logger = logging.getLogger('BotTG')
+
 
 def detect_intent_text(project_id, session_id, message_to_dialogflow, language_code='ru'):
     session_client = dialogflow.SessionsClient()
@@ -47,20 +50,15 @@ def create_intent(project_id, display_name, training_phrases_parts, message_text
     print("Intent created: {}".format(response))
 
 
-def fill_intent(link: str, project_id: str):
+if __name__ == '__main__':
+    env = Env()
+    env.read_env('.env')
     try:
-        response = requests.get(link)
+        response = requests.get(env('DOWNLOAD_LINK'))
         question_answer = response.json()
         for question_title, question in question_answer.items():
             training_phrases_parts = question.get('questions')
             answer = question.get('answer')
-            create_intent(project_id, question_title, training_phrases_parts, answer)
-    except Exception as error:
+            create_intent(env('PROJECT_ID'), question_title, training_phrases_parts, answer)
+    except HTTPError as error:
         logger.exception(error)
-
-
-if __name__ == '__main__':
-    env = Env()
-    env.read_env('.env')
-    fill_intent(env('DOWNLOAD_LINK'), env('PROJECT_ID'))
-

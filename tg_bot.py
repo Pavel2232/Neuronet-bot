@@ -10,7 +10,7 @@ from aiogram import Dispatcher, executor, Bot
 logger = logging.getLogger('BotTG')
 
 
-async def conduct_a_dialogue(message: Message):
+async def conduct_dialogue(message: Message):
     logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                         level=logging.INFO)
     logger.addHandler(TelegramLogger(dp, env('TG_CHAT_ID')))
@@ -29,6 +29,6 @@ if __name__ == '__main__':
     bot = Bot(env('TG_BOT_KEY'))
     dp = Dispatcher(bot)
 
-    dp.register_message_handler(conduct_a_dialogue)
+    dp.register_message_handler(conduct_dialogue)
 
     executor.start_polling(dp)

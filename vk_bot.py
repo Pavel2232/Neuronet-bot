@@ -9,7 +9,14 @@ from vk_api.longpoll import VkLongPoll, VkEventType
 logger = logging.getLogger('BotVK')
 
 
-def main(vk_bot_token: str, vk_chat_id: int):
+def main():
+    env = Env()
+    env.read_env('.env')
+
+    vk_bot_token = env("VK_BOT_TOKEN")
+    vk_chat_id = env('VK_CHAT_ID')
+
+
     logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                         level=logging.INFO)
     vk_session = vk.VkApi(token=vk_bot_token)
@@ -33,10 +40,4 @@ def main(vk_bot_token: str, vk_chat_id: int):
             logger.exception(error)
 
 if __name__ == "__main__":
-    env = Env()
-    env.read_env('.env')
-
-    vk_bot_token = env("VK_BOT_TOKEN")
-    vk_chat_id = env('VK_CHAT_ID')
-
-    main(vk_bot_token, vk_chat_id)
+    main()
