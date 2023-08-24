@@ -1,18 +1,16 @@
 import logging
+
+from environs import Env
+
 from bots_logger import TelegramLogger
 from dialogflow_api import detect_intent_text
 from aiogram.types import Message
-from dialogflow_api import env
 from aiogram import Dispatcher, executor, Bot
 
 logger = logging.getLogger('BotTG')
 
-bot = Bot(env('TG_BOT_KEY'))
-dp = Dispatcher(bot)
 
-
-@dp.message_handler()
-async def to_begin(message: Message):
+async def conduct_a_dialogue(message: Message):
     logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                         level=logging.INFO)
     logger.addHandler(TelegramLogger(dp, env('TG_CHAT_ID')))
@@ -25,4 +23,12 @@ async def to_begin(message: Message):
 
 
 if __name__ == '__main__':
+    env = Env()
+    env.read_env('.env')
+
+    bot = Bot(env('TG_BOT_KEY'))
+    dp = Dispatcher(bot)
+
+    dp.register_message_handler(conduct_a_dialogue)
+
     executor.start_polling(dp)

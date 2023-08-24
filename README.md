@@ -13,19 +13,38 @@
 ### Как запустить проект.
 1. ``` git clone https://github.com/Pavel2232/Neuronet-bot```
 
-# [Получить апи ключи гугл](https://cloud.google.com/docs/authentication/provide-credentials-adc#how-to)
-
 2. Установите необходимые библиотеки  ```poetry install```
 
 3. Создайте файл .env и заполните следующие значения:
 * TG_BOT_KEY=ключ телеграм бота 
 * VK_BOT_TOKEN=ключ вк бота 
-* DIALOGFLOW_API_KEY=API токен DIALOGFLOW
+* DIALOGFLOW_API_KEY=API токен DIALOGFLOW(https://cloud.google.com/docs/authentication/api-keys)
 * PROJECT_ID=PROJECT_ID от DIALOGFLOW
 * VK_CHAT_ID=ваш чат айди
 * TG_CHAT_ID= ваш чат айди(Чтобы получить свой chat_id, напишите в Telegram специальному боту: @userinfobot)
+* DOWNLOAD_LINK=https://dvmn.org/media/filer_public/a7/db/a7db66c0-1259-4dac-9726-2d1fa9c44f20/questions.json
 
+# Как обучить бота?
+- нужно в переменную DOWNLOAD_LINK указать ссылку на json
+ вида 
+```{
+    "Title(Тут название вашего Intent)": {
+        "Training phrases(Тут тренировочные фразы) ": [
+            "Как устроиться к вам на работу?",
+            "Как устроиться к вам?",
+            "Как работать у вас?",
+            "Хочу работать у вас",
+            "Возможно-ли устроиться к вам?",
+            "Можно-ли мне поработать у вас?",
+            "Хочу работать редактором у вас"
+        ],
+        "Responses(Здесь на них ответы) ": "Если вы хотите устроиться к нам, напишите на почту game-of-verbs@gmail.com мини-эссе о себе и прикрепите ваше портфолио."
+    },
+    ...
+   ```
+для натренировки вашего бота.
 
 4. Для запуска программы:
 ```python tg_bot.py```
 ```python vk_bot.py```
+
