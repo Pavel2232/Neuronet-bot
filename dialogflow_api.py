@@ -3,7 +3,6 @@ import logging
 import requests
 from environs import Env
 from google.cloud import dialogflow
-from requests.exceptions import HTTPError
 
 
 logger = logging.getLogger('BotTG')
@@ -32,7 +31,7 @@ def create_intent(project_id, display_name, training_phrases_parts, message_text
     training_phrases = []
     for training_phrases_part in training_phrases_parts:
         part = dialogflow.Intent.TrainingPhrase.Part(text=training_phrases_part)
-        # Here we create a new training phrase for each provided part.
+
         training_phrase = dialogflow.Intent.TrainingPhrase(parts=[part])
         training_phrases.append(training_phrase)
 
@@ -53,12 +52,12 @@ def create_intent(project_id, display_name, training_phrases_parts, message_text
 if __name__ == '__main__':
     env = Env()
     env.read_env('.env')
-    try:
-        response = requests.get(env('DOWNLOAD_LINK'))
-        question_answer = response.json()
-        for question_title, question in question_answer.items():
-            training_phrases_parts = question.get('questions')
-            answer = question.get('answer')
-            create_intent(env('PROJECT_ID'), question_title, training_phrases_parts, answer)
-    except HTTPError as error:
-        logger.exception(error)
+
+    response = requests.get(env('DOWNLOAD_LINK'))
+    logger.exception(response.raise_for_status())
+    question_answer = response.json()
+    for question_title, question in question_answer.items():
+        training_phrases_parts = question.get('questions')
+        answer = question.get('answer')
+        create_intent(env('PROJECT_ID'), question_title, training_phrases_parts, answer)
+
